@@ -1,0 +1,62 @@
+
+<div class="detail" *ngIf="detail">
+
+    <h2>{{ detail.place_name }}</h2>
+    <div class="row">
+
+        <div class="column">
+            <div class="card">
+                <!-- <h3>عکس نمونه</h3> -->
+                <img width="60%" height="auto" [src]="detail.image_path" />
+
+            </div>
+        </div>
+
+
+        <!-- <div class="column">
+            <div class="card">
+                <h3>موقعیت در نقشه</h3>
+                <iframe [src]="mapUrl" width="100%" height="auto"  frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+            </div>
+        </div> -->
+
+
+
+        <div class="column">
+            <div class="card">
+                <h3>توضیحات</h3>
+                <p>{{ detail.description }}</p>
+                <iframe [src]="mapUrl" width="100%" height="auto"  frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
+
+        <!-- <div class="column">
+            <div class="card">
+                <h3>مشخصات</h3>
+                <p>نام: {{ detail.place_name }}</p>
+                <p>شناسه دسته: {{ detail.class_id}}</p>
+                <p>نام دسته: {{ detail.class_name }}</p>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="gallery-group" *ngIf="detail.gallery.length != 0">
+        <h3>تصاویر دیگر</h3>
+
+        <div class="gallery" *ngFor="let image of detail.gallery">
+            <img [src]="image.path" alt="ندارد">
+        </div>
+    </div>
+
+
+    <div class="gallery-group" *ngIf="detail.similar_places.length != 0">
+        <h3>مکان‌های مشابه</h3>
+        <div class="gallery" *ngFor="let image of detail.similar_places">
+            <a [routerLink]="['/detail', image.id]"><img [src]="image.path" alt="ندارد"></a>
+            <div class="desc">
+                <a [routerLink]="['/detail', image.id]"> {{ image.name }}</a>
+            </div>
+        </div>
+    </div>
+</div>

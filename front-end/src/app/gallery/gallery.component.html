@@ -1,0 +1,8 @@
+<div class="gallery-group" *ngIf="galleryImages.length != 0">
+    <div class="gallery" *ngFor="let image of galleryImages">
+        <a [routerLink]="['/detail', image.id]"><img [src]="image.path" alt="ندارد"></a>
+        <div class="desc">
+            <a [routerLink]="['/detail', image.id]"> {{ image.name }}</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="container">
+    <img class="center" src="http://127.0.0.1:5000/static/mosaic/project-title.png" />
+
+    <div class="wrapper">
+        <div class="file-upload">
+            <!-- <input type="file" name="image" ng2FileSelect [uploader]="uploader"
+        accept="image/x-png,image/gif,image/jpeg,image/png" /> -->
+            <!-- <input type="file" name="image" type="file" name="file" #fileInput
+                (change)="onChange(fileInput.files[0])" />
+                 -->
+            <!-- <div>
+                <label for="files" class="btn">انتخاب عکس</label>
+                <input id="files" style="visibility:hidden;" type="file">
+            </div> -->
+
+            <div class="upload-btn-wrapper">
+                <button class="btn">انتخاب عکس</button>
+                <h2>{{ fileName }}</h2>
+                <!-- <input type="file" name="myfile" /> -->
+                <input type="file" name="myfile" type="file" name="file" #fileInput
+                    (change)="onChange(fileInput.files[0])" />
+
+            </div>
+
+            <button type="button" class="search-btn" (click)="onUpload()" [disabled]="isUploading">
+                جستجو
+            </button>
+
+            <!-- <div>
+                <figure class="image is-128x128">
+                    <img height="128" width="128" [src]="imageUrl" />
+                </figure>
+            </div> -->
+
+        </div>
+    </div>
+
+
+
+    <div class="gallery-group" *ngIf="probableImages.length != 0">
+        <div class="gallery" *ngFor="let image of probableImages">
+            <a [routerLink]="['/detail', image.id]"><img [src]="image.path" alt="ندارد"></a>
+            <div class="desc">
+                <a [routerLink]="['/detail', image.id]"> {{ image.name }}</a>
+            </div>
+        </div>
+    </div>
+</div>
